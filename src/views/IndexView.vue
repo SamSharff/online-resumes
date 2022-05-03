@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="index">
     {{ firstName }}
     {{ lastName }}
     {{ email }}
@@ -25,7 +25,6 @@
 
 <script>
 export default {
-  name: "HomeView",
   data() {
     return {
       firstName: "first name",
