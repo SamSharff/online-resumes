@@ -2,11 +2,6 @@
   <div class="container">
     <div id="resume">
       <div id="header" class="section">
-        <!-- container to hold picture, if it exists -->
-        <!-- Container to hold text information -->
-
-        <!-- Question to back end people: will they be doing formatting of the data for consistency amongst students? e.g. capitalizing names, same format for phone numbers, etc.  -->
-
         <!-- Stuff above the bio -->
         <div id="header-above-bio">
           <div id="header-photo" class="header-item">
@@ -59,15 +54,36 @@
       </div>
 
       <div id="experience" class="section">
+        <h2>Experience</h2>
         <div v-for="experience in experiences" :key="experience.jobTitle">
           {{ experience.companyName }}
           {{ experience.jobTitle }}
         </div>
+
+        <div v-for="experience in experiences" :key="experience.universityName">
+          <div>
+            {{ experience.universityName }}
+          </div>
+          <div>
+            {{ experience.companyName }}
+            |
+            {{ experience.startDate }}
+            -
+            {{ experience.endDate }}
+          </div>
+          <div>{{ experience.jobTitle }}</div>
+          <ul v-for="detail in experience.details" :key="detail">
+            <li>
+              {{ detail }}
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div id="skills" class="section">
-        <div v-for="skill in skills" :key="skill">
-          {{ skill }}
+        <h2>Skills</h2>
+        <div>
+          {{ skills.join(" | ") }}
         </div>
       </div>
     </div>
@@ -110,7 +126,7 @@ export default {
           startDate: "start",
           endDate: "end",
           companyName: "company",
-          details: "details",
+          details: ["detail 1", "detail 2"],
         },
       ],
       capstone: {
@@ -129,6 +145,11 @@ export default {
 /* Removes extra margin from the h1 */
 h1 {
   margin: 0px;
+  font-family: ‘Manrope’;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  color: #2f448f;
 }
 
 h2 {
