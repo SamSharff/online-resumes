@@ -1,14 +1,9 @@
+<script setup>
+import Tweet from "vue-tweet";
+</script>
+
 <template>
   <div class="twitter">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Tweet tweet-id="1370027087818461184" theme="dark" />
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
