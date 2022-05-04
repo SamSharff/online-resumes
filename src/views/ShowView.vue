@@ -99,6 +99,14 @@
         </div>
       </div>
     </div>
+    <div id="twitter-feed">
+      <a
+        class="twitter-timeline"
+        :href="'https://twitter.com/' + twitterHandle"
+        data-tweet-limit="5"
+        data-width="399"
+      ></a>
+    </div>
   </div>
 </template>
 
