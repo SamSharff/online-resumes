@@ -14,31 +14,6 @@ export default {
           github: "",
         },
       ],
-      // educations: [
-      //   {
-      //     startDate: "start",
-      //     endDate: "end",
-      //     degree: "degree",
-      //     universityName: "uni",
-      //     details: "details",
-      //   },
-      // ],
-      // skills: ["Ruby", "HTML"],
-      // experiences: [
-      //   {
-      //     jobTitle: "job",
-      //     startDate: "start",
-      //     endDate: "end",
-      //     companyName: "company",
-      //     details: "details",
-      //   },
-      // ],
-      // capstone: {
-      //   name: "name",
-      //   description: "desc",
-      //   url: "url",
-      //   screenshot: "img",
-      // },
     };
   },
   created: function () {
