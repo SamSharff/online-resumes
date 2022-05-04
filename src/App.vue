@@ -35,10 +35,7 @@
           <a class="nav-link" href="/index">Resumes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/show">My Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/twitter">Twitter</a>
+          <a class="nav-link" href="">Log In</a>
         </li>
       </ul>
     </div>
