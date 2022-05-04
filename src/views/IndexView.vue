@@ -1,43 +1,24 @@
-<template>
-  <div class="index">
-    {{ firstName }}
-    {{ lastName }}
-    {{ email }}
-    {{ phoneNumber }}
-    {{ shortBio }}
-    {{ linkedIn }}
-    {{ twitterHandle }}
-    {{ personalWebsite }}
-    {{ onlineResume }}
-    {{ github }}
-    {{ photo }}
-    <div v-for="experience in experiences" :key="experience.jobTitle">
-      {{ experience }}
-    </div>
-    <div v-for="education in educations" :key="education.universityName">
-      {{ education }}
-    </div>
-    <div v-for="skill in skills" :key="skill">
-      {{ skill }}
-    </div>
-  </div>
-</template>
-
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      firstName: "first name",
-      lastName: "last name",
-      email: "example@example.com",
-      phoneNumber: "832",
-      shortBio: "bio",
-      linkedIn: "LIurl",
-      twitterHandle: "Twitter",
-      personalWebsite: "website",
-      onlineResume: "resume",
-      github: "git",
-      photo: "img",
+      students: [
+        {
+          firstName: "first name",
+          lastName: "last name",
+          email: "example@example.com",
+          // phoneNumber: "832",
+          shortBio: "bio",
+          linkedIn: "LIurl",
+          // twitterHandle: "Twitter",
+          // personalWebsite: "website",
+          // onlineResume: "resume",
+          github: "git",
+          // photo: "img",
+        },
+      ],
       educations: [
         {
           startDate: "start",
@@ -65,6 +46,41 @@ export default {
       },
     };
   },
-  methods: {},
+  created: function () {
+    axios.get("http://localhost:3000/students.json").then((response) => {
+      this.students = response.data;
+      console.log("All students", this.students);
+    });
+  },
 };
 </script>
+
+<template>
+  <div class="index">
+    <div v-for="student in students" v-bind:key="student.firstName">
+      <h1>Candidate Resumes</h1>
+      <h2>First Name: {{ student.firstName }}</h2>
+      <h2>Last Name: {{ student.lastName }}</h2>
+      <h3>Bio: {{ student.shortBio }}</h3>
+      <span>LinkedIn: {{ student.linkedIn }} | github: {{ student.github }}</span>
+      <br />
+      <a href="`/students/${student.id}`">Read more</a>
+
+      <h2>First Name: {{ student.firstName }}</h2>
+      <h2>Last Name: {{ student.lastName }}</h2>
+      <h3>Bio: {{ student.shortBio }}</h3>
+      <span>LinkedIn: {{ student.linkedIn }} | github: {{ student.github }}</span>
+      <br />
+      <a href="`/students/${student.id}`">Read more</a>
+
+      <h2>First Name: {{ student.firstName }}</h2>
+      <h2>Last Name: {{ student.lastName }}</h2>
+      <h3>Bio: {{ student.shortBio }}</h3>
+      <span>LinkedIn: {{ student.linkedIn }} | github: {{ student.github }}</span>
+      <br />
+      <a href="`/students/${student.id}`">Read more</a>
+    </div>
+  </div>
+</template>
+
+<style></style>
