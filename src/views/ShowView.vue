@@ -17,11 +17,20 @@
               |
               <a :href="onlineResume">{{ onlineResume }}</a>
               |
-              <a :href="linkedIn">{{ linkedIn }}</a>
+              <a :href="'https://www.linkedin.com/in/' + linkedIn">
+                <!-- <img src="../assets/linkedin.png" alt="" class="logo" /> -->
+                {{ linkedIn }}
+              </a>
               |
-              <a :href="github">{{ github }}</a>
+              <a :href="github">
+                <!-- <img src="../assets/github.png" alt="" class="logo" /> -->
+                {{ github }}
+              </a>
               |
-              <a :href="twitterHandle">{{ twitterHandle }}</a>
+              <a :href="'https://twitter.com/' + twitterHandle">
+                <img src="../assets/twitter.webp" alt="" class="logo" />
+                {{ twitterHandle }}
+              </a>
             </div>
           </div>
         </div>
@@ -34,16 +43,20 @@
 
       <div id="education" class="section">
         <h2>Education</h2>
-        <div v-for="education in educations" :key="education.universityName">
+        <div v-for="education in educations" :key="education.universityName" class="list-group">
           <div>
-            {{ education.universityName }}
-          </div>
-          <div>
-            {{ education.degree }}
+            <b>
+              {{ education.universityName }}
+            </b>
             |
             {{ education.startDate }}
             -
             {{ education.endDate }}
+          </div>
+          <div>
+            <i>
+              {{ education.degree }}
+            </i>
           </div>
           <ul v-for="detail in education.details" :key="detail">
             <li>
@@ -55,23 +68,22 @@
 
       <div id="experience" class="section">
         <h2>Experience</h2>
-        <div v-for="experience in experiences" :key="experience.jobTitle">
-          {{ experience.companyName }}
-          {{ experience.jobTitle }}
-        </div>
 
-        <div v-for="experience in experiences" :key="experience.universityName">
+        <div v-for="experience in experiences" :key="experience.companyName" class="list-group">
           <div>
-            {{ experience.universityName }}
-          </div>
-          <div>
-            {{ experience.companyName }}
+            <b>
+              {{ experience.companyName }}
+            </b>
             |
             {{ experience.startDate }}
             -
             {{ experience.endDate }}
           </div>
-          <div>{{ experience.jobTitle }}</div>
+          <div>
+            <i>
+              {{ experience.jobTitle }}
+            </i>
+          </div>
           <ul v-for="detail in experience.details" :key="detail">
             <li>
               {{ detail }}
@@ -82,7 +94,7 @@
 
       <div id="skills" class="section">
         <h2>Skills</h2>
-        <div>
+        <div class="list-group">
           {{ skills.join(" | ") }}
         </div>
       </div>
@@ -95,15 +107,15 @@ export default {
   name: "HomeView",
   data() {
     return {
-      firstName: "first name",
-      lastName: "last name",
-      email: "example@example.com",
-      phoneNumber: "832",
+      firstName: "Kobe",
+      lastName: "Bryant",
+      email: "kobebryant@nba.com",
+      phoneNumber: "081-888-2424",
       shortBio:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptatem error ad maiores atque distinctio facilis voluptas vel, at, a ut corrupti aspernatur asperiores maxime enim alias expedita accusamus fugiat!",
-      linkedIn: "LIurl",
-      twitterHandle: "Twitter",
-      personalWebsite: "website",
+        "Kobe Bean Bryant was an American professional basketball player. A shooting guard, he spent his entire 20-year career with the Los Angeles Lakers in the National Basketball Association (NBA). Widely regarded as one of the greatest basketball players of all time, Bryant won five NBA championships, was an 18-time All-Star, a 15-time member of the All-NBA Team, a 12-time member of the All-Defensive Team, the 2008 NBA Most Valuable Player (MVP), and a two-time NBA Finals MVP. Bryant also led the NBA in scoring twice, and ranks fourth in league all-time regular season and postseason scoring. He was posthumously voted into the Naismith Memorial Basketball Hall of Fame in 2020.",
+      linkedIn: "kobe-bryant-3b87b8205",
+      twitterHandle: "@kobebryant",
+      personalWebsite: "granitystudios.com",
       onlineResume: "resume",
       github: "git",
       photo: "https://cdn.nba.com/headshots/nba/latest/1040x760/977.png",
@@ -128,6 +140,13 @@ export default {
           companyName: "company",
           details: ["detail 1", "detail 2"],
         },
+        {
+          jobTitle: "job 2",
+          startDate: "start 2",
+          endDate: "end 2",
+          companyName: "company 2",
+          details: ["detail 1", "detail 2"],
+        },
       ],
       capstone: {
         name: "name",
@@ -145,7 +164,6 @@ export default {
 /* Removes extra margin from the h1 */
 h1 {
   margin: 0px;
-  font-family: ‘Manrope’;
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -154,6 +172,7 @@ h1 {
 
 h2 {
   margin: 0px;
+  color: #2f448f;
 }
 
 ul {
@@ -167,18 +186,13 @@ ul {
 #resume {
   display: flex;
   flex-direction: column;
-  border-style: solid;
-  /* align-items: center; */
-  /* justify-content: center; */
+  font-family: ‘Manrope’;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  border-style: solid;
-  /* align-items: center; */
-  /* justify-content: center; */
-  width: 80%;
+  width: 1200px;
   margin: 5px auto;
   text-align: start;
 }
@@ -191,7 +205,6 @@ ul {
 #header-above-bio {
   display: flex;
   justify-content: left;
-  border-style: solid;
 }
 
 #header-photo {
@@ -203,14 +216,24 @@ ul {
   width: 100px;
   object-fit: cover;
   border-style: solid;
-  border-color: black;
+  background-color: grey;
 }
 
 #header-contact-info {
   align-self: center;
 }
 
+.logo {
+  height: 15px;
+  width: 15px;
+  object-fit: cover;
+}
+
 .section {
   padding: 5px;
+}
+
+.list-group {
+  margin: 5px 0px;
 }
 </style>
