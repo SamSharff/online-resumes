@@ -20,20 +20,6 @@
 </template>
 
 <style>
-/* h1 {
-  margin: 0px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 80px;
-  color: #2f448f;
-}
-h2 {
-  margin: 0px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 60px;
-  color: #2f448f;
-} */
 #photo {
   height: 400px;
   width: 500px;
