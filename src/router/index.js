@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import IndexView from "../views/IndexView.vue";
 import ShowView from "../views/ShowView.vue";
-import TwitterView from "../views/TwitterView.vue";
 import HomeView from "../views/HomeView.vue";
 
 const routes = [
@@ -17,14 +16,6 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: ShowView,
-  },
-  {
-    path: "/twitter",
-    name: "twitter",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: TwitterView,
   },
   {
     path: "/home",
