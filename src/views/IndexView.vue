@@ -96,7 +96,7 @@ export default {
 
               <!-- More info -->
               <div class="row px-2">
-                <a :href="`/students/${student.id}`">Read more</a>
+                <a :href="`/show/${student.id}`">Read more</a>
               </div>
             </div>
           </div>

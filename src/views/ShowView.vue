@@ -66,33 +66,33 @@ export default {
             </a>
           </div>
         </div>
-
-        <!-- Bio -->
-        <div id="header-bio" class="header-item">
-          {{ student.short_bio }}
-        </div>
       </div>
-      <div id="education" class="section">
-        <h2>Education</h2>
-        <div class="list-group">
-          <div>
-            <b>
-              {{ educations.university_name }}
-            </b>
-            |
-            {{ educations.start_date }}
-            -
-            {{ educations.end_date }}
-          </div>
-          <div>
-            <i>
-              {{ educations.degree }}
-            </i>
-          </div>
-          {{ educations.details }}
-        </div>
+      <!-- Bio -->
+      <div id="header-bio" class="header-item">
+        {{ student.short_bio }}
       </div>
-      <!-- <div id="experience" class="section">
+    </div>
+    <div id="education" class="section">
+      <h2>Education</h2>
+      <div class="list-group">
+        <div>
+          <b>
+            {{ educations.university_name }}
+          </b>
+          |
+          {{ educations.start_date }}
+          -
+          {{ educations.end_date }}
+        </div>
+        <div>
+          <i>
+            {{ educations.degree }}
+          </i>
+        </div>
+        {{ educations.details }}
+      </div>
+    </div>
+    <!-- <div id="experience" class="section">
         <h2>Experience</h2>
 
         <div class="list-group">
@@ -113,21 +113,15 @@ export default {
           {{ experiences.detail }}
         </div>
       </div> -->
-      <div id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="list-group">
-          {{ skills.skill_name }}
-        </div>
+    <div id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="list-group">
+        {{ skills.skill_name }}
       </div>
     </div>
-    <div id="twitter-feed">
-      <a
-        class="twitter-timeline"
-        :href="'https://twitter.com/' + twitterHandle"
-        data-tweet-limit="5"
-        data-width="399"
-      ></a>
-    </div>
+  </div>
+  <div id="twitter-feed">
+    <a class="twitter-timeline" :href="'https://twitter.com/alyankovic'" data-tweet-limit="5" data-width="399"></a>
   </div>
 </template>
 
