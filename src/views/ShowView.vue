@@ -4,57 +4,28 @@ import axios from "axios";
 export default {
   data() {
     return {
-      student: {
-        // firstName: "",
-        // lastName: "",
-        // email: "",
-        // phoneNumber: "",
-        // shortBio: "",
-        // linkedIn: "",
-        // twitterHandle: "",
-        // personalWebsite: "",
-        // onlineResume: "",
-        // github: "",
-        // photo: "",
-        // educations: [
-        //   {
-        //     startDate: "",
-        //     endDate: "",
-        //     degree: "",
-        //     universityName: "",
-        //     details: [],
-        //   },
-        // ],
-        // skills: [],
-        // experiences: [
-        //   {
-        //     jobTitle: "",
-        //     startDate: "",
-        //     endDate: "",
-        //     companyName: "",
-        //     details: [],
-        //   },
-        //   {
-        //     jobTitle: "",
-        //     startDate: "",
-        //     endDate: "",
-        //     companyName: "",
-        //     details: [],
-        //   },
-        // ],
-        // capstone: {
-        //   name: "",
-        //   description: "",
-        //   url: "",
-        //   screenshot: "",
-        // },
-      },
+      student: {},
+      educations: {},
+      experiences: {},
+      skills: {},
     };
   },
   created: function () {
     axios.get("http://localhost:3000/students/" + this.$route.params.id + ".json").then((response) => {
       console.log("show student", response);
       this.student = response.data;
+    });
+    axios.get("http://localhost:3000/educations/" + this.$route.params.id + ".json").then((response) => {
+      console.log("show education", response);
+      this.educations = response.data;
+    });
+    axios.get("http://localhost:3000/experience/" + this.$route.params.id + ".json").then((response) => {
+      console.log("show experience", response);
+      this.experiences = response.data;
+    });
+    axios.get("http://localhost:3000/skills/" + this.$route.params.id + ".json").then((response) => {
+      console.log("show skills", response);
+      this.skills = response.data;
     });
   },
   methods: {},
@@ -63,102 +34,89 @@ export default {
 
 <template>
   <div class="container">
-    <div id="resume">
-      <div id="header" class="section">
-        <!-- Stuff above the bio -->
-        <div id="header-above-bio">
-          <div id="header-photo" class="header-item">
-            <img :src="photo" alt="photo" id="photo" />
+    <div id="header" class="section">
+      <!-- Stuff above the bio -->
+      <div id="header-above-bio">
+        <div id="header-photo" class="header-item">
+          <img :src="photo" alt="photo" id="photo" />
+        </div>
+        <div id="header-contact-info" class="header-item">
+          <div>
+            <h1>{{ `${student.first_name} ${student.last_name}` }}</h1>
           </div>
-          <div id="header-contact-info" class="header-item">
-            <div>
-              <h1>{{ `${student.first_name} ${student.last_name}` }}</h1>
-            </div>
-            <div>{{ `${email} | ${phoneNumber}` }}</div>
-            <div>
-              <a :href="personalWebsite">{{ personalWebsite }}</a>
-              |
-              <a :href="onlineResume">{{ onlineResume }}</a>
-              |
-              <a :href="'https://www.linkedin.com/in/' + linkedIn">
-                <!-- <img src="../assets/linkedin.png" alt="" class="logo" /> -->
-                {{ linkedIn }}
-              </a>
-              |
-              <a :href="github">
-                <!-- <img src="../assets/github.png" alt="" class="logo" /> -->
-                {{ github }}
-              </a>
-              |
-              <a :href="'https://twitter.com/' + twitterHandle">
-                <img src="../assets/twitter.webp" alt="" class="logo" />
-                {{ twitterHandle }}
-              </a>
-            </div>
+          <div>{{ `${student.email} | ${student.phone_number}` }}</div>
+          <div>
+            <a :href="student.website_url">{{ student.website_url }}</a>
+            |
+            <a :href="student.online_resume_url">{{ student.online_resume_url }}</a>
+            |
+            <a :href="'https://www.linkedin.com/in/' + student.linkedin_url">
+              <!-- <img src="../assets/linkedin.png" alt="" class="logo" /> -->
+              {{ student.linkedin_url }}
+            </a>
+            |
+            <a :href="student.github_url">
+              <!-- <img src="../assets/github.png" alt="" class="logo" /> -->
+              {{ student.github_url }}
+            </a>
+            |
+            <a :href="'https://twitter.com/' + student.twitter_handle">
+              <img src="../assets/twitter.webp" alt="" class="logo" />
+              {{ student.twitter_handle }}
+            </a>
           </div>
         </div>
 
         <!-- Bio -->
         <div id="header-bio" class="header-item">
-          {{ shortBio }}
+          {{ student.short_bio }}
         </div>
       </div>
-
       <div id="education" class="section">
         <h2>Education</h2>
-        <div v-for="education in educations" :key="education.universityName" class="list-group">
+        <div class="list-group">
           <div>
             <b>
-              {{ education.universityName }}
+              {{ educations.university_name }}
             </b>
             |
-            {{ education.startDate }}
+            {{ educations.start_date }}
             -
-            {{ education.endDate }}
+            {{ educations.end_date }}
           </div>
           <div>
             <i>
-              {{ education.degree }}
+              {{ educations.degree }}
             </i>
           </div>
-          <ul v-for="detail in education.details" :key="detail">
-            <li>
-              {{ detail }}
-            </li>
-          </ul>
+          {{ educations.details }}
         </div>
       </div>
-
-      <div id="experience" class="section">
+      <!-- <div id="experience" class="section">
         <h2>Experience</h2>
 
-        <div v-for="experience in experiences" :key="experience.companyName" class="list-group">
+        <div class="list-group">
           <div>
             <b>
-              {{ experience.companyName }}
+              {{ experiences.company_name }}
             </b>
             |
-            {{ experience.startDate }}
+            {{ experiences.start_date }}
             -
-            {{ experience.endDate }}
+            {{ experiences.end_date }}
           </div>
           <div>
             <i>
-              {{ experience.jobTitle }}
+              {{ experiences.job_title }}
             </i>
           </div>
-          <ul v-for="detail in experience.details" :key="detail">
-            <li>
-              {{ detail }}
-            </li>
-          </ul>
+          {{ experiences.detail }}
         </div>
-      </div>
-
+      </div> -->
       <div id="skills" class="section">
         <h2>Skills</h2>
         <div class="list-group">
-          {{ skills.join(" | ") }}
+          {{ skills.skill_name }}
         </div>
       </div>
     </div>
