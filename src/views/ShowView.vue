@@ -1,3 +1,66 @@
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      student: {
+        // firstName: "",
+        // lastName: "",
+        // email: "",
+        // phoneNumber: "",
+        // shortBio: "",
+        // linkedIn: "",
+        // twitterHandle: "",
+        // personalWebsite: "",
+        // onlineResume: "",
+        // github: "",
+        // photo: "",
+        // educations: [
+        //   {
+        //     startDate: "",
+        //     endDate: "",
+        //     degree: "",
+        //     universityName: "",
+        //     details: [],
+        //   },
+        // ],
+        // skills: [],
+        // experiences: [
+        //   {
+        //     jobTitle: "",
+        //     startDate: "",
+        //     endDate: "",
+        //     companyName: "",
+        //     details: [],
+        //   },
+        //   {
+        //     jobTitle: "",
+        //     startDate: "",
+        //     endDate: "",
+        //     companyName: "",
+        //     details: [],
+        //   },
+        // ],
+        // capstone: {
+        //   name: "",
+        //   description: "",
+        //   url: "",
+        //   screenshot: "",
+        // },
+      },
+    };
+  },
+  created: function () {
+    axios.get("http://localhost:3000/students/" + this.$route.params.id + ".json").then((response) => {
+      console.log("show student", response);
+      this.student = response.data;
+    });
+  },
+  methods: {},
+};
+</script>
+
 <template>
   <div class="container">
     <div id="resume">
@@ -9,7 +72,7 @@
           </div>
           <div id="header-contact-info" class="header-item">
             <div>
-              <h1>{{ `${firstName} ${lastName}` }}</h1>
+              <h1>{{ `${student.first_name} ${student.last_name}` }}</h1>
             </div>
             <div>{{ `${email} | ${phoneNumber}` }}</div>
             <div>
@@ -101,64 +164,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "HomeView",
-  data() {
-    return {
-      firstName: "Kobe",
-      lastName: "Bryant",
-      email: "kobebryant@nba.com",
-      phoneNumber: "081-888-2424",
-      shortBio:
-        "Kobe Bean Bryant was an American professional basketball player. A shooting guard, he spent his entire 20-year career with the Los Angeles Lakers in the National Basketball Association (NBA). Widely regarded as one of the greatest basketball players of all time, Bryant won five NBA championships, was an 18-time All-Star, a 15-time member of the All-NBA Team, a 12-time member of the All-Defensive Team, the 2008 NBA Most Valuable Player (MVP), and a two-time NBA Finals MVP. Bryant also led the NBA in scoring twice, and ranks fourth in league all-time regular season and postseason scoring. He was posthumously voted into the Naismith Memorial Basketball Hall of Fame in 2020.",
-      linkedIn: "kobe-bryant-3b87b8205",
-      twitterHandle: "@kobebryant",
-      personalWebsite: "granitystudios.com",
-      onlineResume: "resume",
-      github: "git",
-      photo: "https://cdn.nba.com/headshots/nba/latest/1040x760/977.png",
-      educations: [
-        {
-          startDate: "1992",
-          endDate: "1996",
-          degree: "GED",
-          universityName: "Lower Marion High School",
-          details: [
-            "Bryant became the first freshman in decades to start for Lower Merion's varsity team.",
-            "During his junior year, he averaged 31.1 points, 10.4 rebounds, 5.2 assists, 3.8 blocks and 2.3 steals[38] and was named Pennsylvania Player of the Year",
-          ],
-        },
-      ],
-      skills: ["Ruby", "HTML"],
-      experiences: [
-        {
-          jobTitle: "job",
-          startDate: "start",
-          endDate: "end",
-          companyName: "company",
-          details: ["detail 1", "detail 2"],
-        },
-        {
-          jobTitle: "job 2",
-          startDate: "start 2",
-          endDate: "end 2",
-          companyName: "company 2",
-          details: ["detail 1", "detail 2"],
-        },
-      ],
-      capstone: {
-        name: "name",
-        description: "desc",
-        url: "url",
-        screenshot: "img",
-      },
-    };
-  },
-  methods: {},
-};
-</script>
 
 <style>
 /* Removes extra margin from the h1 */
