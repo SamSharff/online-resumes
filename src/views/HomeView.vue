@@ -1,30 +1,26 @@
 <script></script>
 
 <template>
-  <div class="home">
-    <h1>SKILLZZZ</h1>
-    <h2>ONE STOP RESUME SHOP</h2>
+  <!-- <div class="home">
+    <img alt="Vue logo" src="../assets/Skillz.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
+  </div> -->
+
+  <div class="text center">
+    <img src="../assets/Skillz1.png" class="" alt="photo" id="photo" />
   </div>
 
   <div>
-    <button type="button" class="btn btn-primary" href="/show">Primary</button>
-    <b-button href="#">I am a Link</b-button>
+    <button type="button" class="btn btn-lg btn-outline-primary" href="/show">Browse Resumes</button>
   </div>
-
-  <div class="card" style="width: 18rem">
-    <img src="" class="card-img-top" alt="" />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk of the card's content.
-      </p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+  <br />
+  <div>
+    <button type="button" class="btn btn-lg btn-outline-primary">Log In</button>
   </div>
 </template>
 
 <style>
-h1 {
+/* h1 {
   margin: 0px;
   font-style: normal;
   font-weight: 800;
@@ -37,5 +33,11 @@ h2 {
   font-weight: 800;
   font-size: 60px;
   color: #2f448f;
+} */
+#photo {
+  height: 400px;
+  width: 500px;
+  justify-content: center;
+  border-color: white;
 }
 </style>
