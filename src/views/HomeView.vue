@@ -11,11 +11,11 @@
   </div>
 
   <div>
-    <button type="button" class="btn btn-lg btn-outline-primary" href="/show">Browse Resumes</button>
+    <a href="http://localhost:8080/index" class="btn btn-lg btn-outline-primary">Browse Resumes</a>
   </div>
   <br />
   <div>
-    <button type="button" class="btn btn-lg btn-outline-primary">Log In</button>
+    <a href="http://localhost:8080/index" class="btn btn-lg btn-outline-primary">Log In</a>
   </div>
 </template>
 
